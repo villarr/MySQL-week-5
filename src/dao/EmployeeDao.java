@@ -9,14 +9,15 @@ import java.util.Scanner;
 // Employee Dao class containing queries and methods for working with Company Database. 
 
 public class EmployeeDao {
-int x = 0;
+
 private Connection connection;
 private final String GET_EMPLOYEES_QUERY = "SELECT * FROM employee";
 private final String CREATE_EMPLOYEES_QUERY = "INSERT INTO employee (id, shirt_size, company_name, dept_name, job_title, university, linkedin_skill)\n"
 + " VALUES(?,?,?,?,?,?,?)";
 private final String DELETE_EMPLOYEES_QUERY = "DELETE from employee WHERE id = ?"; 
 private final String UPDATE_EMPLOYEES_QUERY = "UPDATE employee SET job_title = ? WHERE id = ?";
-// private final String UPDATE_EMPLOYEES_QUERY = "UPDATE animals SET immunized = ? WHERE pet_id = ?";
+int x = 0;
+
 private Scanner sc = new Scanner(System.in);
 
 
@@ -112,11 +113,13 @@ public void updateEmployees() throws SQLException {
 	+ "/ Job = " + rs.getString(5));
 	}
 	System.out.println("\n");
+	
 	int n = 0; 
 
 	PreparedStatement ps = connection.prepareStatement(UPDATE_EMPLOYEES_QUERY);
 
-	System.out.println("Enter no. of employees to update"); 
+	System.out.println("Enter no. of employees to update");
+	
 	n = Integer.parseInt(sc.nextLine());
 
 	for (int i = 1; i <= n; i++) {
